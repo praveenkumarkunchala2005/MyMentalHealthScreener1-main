@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>student</title>
+</head>
+<body class="bg-dark"> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+      <div class="container">
+          <a class="navbar-brand" href="#">My Mental Wellness</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ml" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/<%=locals.id%>/profile">Profile</a>
+                </li>
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="/">Logout</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  
+  <section class="MentalWellNessquestiona">
+    <div class="container my-3">
+      <div class="rounded bg-light">
+        <div class="row justify-content-center align-items-center g-2 my-3">
+          <div class="col-sm-6 col-md-8 col-lg-8">
+            <div class="card text-center my-3 mx-3 h-100">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h4 class="card-title">Welcome to My Mental Wellness!</h4>
+                <p class="card-text">Your Path to Better Mental and Physical Health Starts Here.</p>
+                <a href="/<%=locals.id%>/phq9">
+                  <button class="btn btn-primary" role="button">click here for answering questionnaire</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 d-flex align-items-center justify-content-center">
+            <img class="img-fluid width-40%" src="/images/1.png" alt="aboutphoto">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container my-4">
+    <div class="row">
+        <div class="col-md-6">
+          <!-- Sleep Rating Card -->
+          <div class="card">
+            <div class="card-body text-center">
+              <h2 class="card-title">Rate Your Sleep (1 to 5)</h2>
+              <form id="sleep-form">
+                <div class="form-group">
+                  <label for="sleep-date">Select Date:</label>
+                  <input type="date" class="form-control" id="sleep-date" value="<%= new Date().toISOString().substr(0, 10) %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="sleep-time">Select Time:</label>
+                  <input type="time" class="form-control" id="sleep-time" value="<%= new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>" required>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sleepRating" id="sleep-rating-1" value="1">
+                  <label class="form-check-label" for="sleep-rating-1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sleepRating" id="sleep-rating-2" value="2">
+                  <label class="form-check-label" for="sleep-rating-2">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sleepRating" id="sleep-rating-3" value="3">
+                  <label class="form-check-label" for="sleep-rating-3">3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sleepRating" id="sleep-rating-4" value="4">
+                  <label class="form-check-label" for="sleep-rating-4">4</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sleepRating" id="sleep-rating-5" value="5">
+                  <label class="form-check-label" for="sleep-rating-5">5</label>
+                </div>
+                <div class="mt-3">
+                  <p id="sleep-selected">You rated: <span id="sleep-value">N/A</span></p>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Sleep Rating</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!-- Stress Rating Card -->
+          <div class="card">
+            <div class="card-body text-center">
+              <h2 class="card-title">Rate Your Stress (1 to 5)</h2>
+              <form id="stress-form">
+                <div class="form-group">
+                  <label for="stress-date">Select Date:</label>
+                  <input type="date" class="form-control" id="stress-date" value="<%= new Date().toISOString().substr(0, 10) %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="stress-time">Select Time:</label>
+                  <input type="time" class="form-control" id="stress-time" value="<%= new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>" required>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="stressRating" id="stress-rating-1" value="1">
+                  <label class="form-check-label" for="stress-rating-1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="stressRating" id="stress-rating-2" value="2">
+                  <label class="form-check-label" for="stress-rating-2">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="stressRating" id="stress-rating-3" value="3">
+                  <label class="form-check-label" for="stress-rating-3">3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="stressRating" id="stress-rating-4" value="4">
+                  <label class="form-check-label" for="stress-rating-4">4</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="stressRating" id="stress-rating-5" value="5">
+                  <label class="form-check-label" for="stress-rating-5">5</label>
+                </div>
+                <div class="mt-3">
+                  <p id="stress-selected">You rated: <span id="stress-value">N/A</span></p>
+                </div>
+                <button type="submit" class="btn btn-danger">Submit Stress Rating</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+  <!-- footer start -->
+  <footer id="footer" class="mt-2 bg-dark border">
+      <div class="container p-2 bf-dark text-center justify-content-center align-items-center">
+          <div class="copyright justify-content-center align-items-center text-white">
+              &copy; Copyright <strong><span>My Mental Wellness</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits align-items-center justify-content-center  text-white">
+              Designed by <a href="https://bootstrapmade.com/">Bootstrap</a> and <a href="#">My Mental Wellness</a>
+          </div>
+      </div>
+  </footer>
+  <!-- End Footer -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+  </body>
+</html>
+  
+  
+  
+  </body>
+</html>
